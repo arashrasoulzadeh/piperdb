@@ -4,9 +4,10 @@ package server
 
 import "net"
 
-func (server *Server) Listen(port string) {
-	server.Listener, _ = net.Listen("tcp", ":"+port)
+func (s *Server) Listen(port string) (err error) {
+	s.Listener, err = net.Listen("tcp", ":"+port)
+	return err
 }
-func (server *Server) L() net.Listener {
-	return server.Listener
+func (s *Server) L() net.Listener {
+	return s.Listener
 }
